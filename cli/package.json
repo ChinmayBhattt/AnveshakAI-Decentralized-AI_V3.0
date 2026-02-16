@@ -1,0 +1,25 @@
+{
+  "name": "anveshak-cli",
+  "version": "1.0.0",
+  "description": "AnveshakAI CLI Tool",
+  "main": "bin/index.js",
+  "type": "module",
+  "bin": {
+    "anveshak": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "node bin/index.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "conf": "^10.2.0",
+    "dotenv": "^16.4.5",
+    "figlet": "^1.7.0",
+    "inquirer": "^9.2.14",
+    "marked": "^12.0.0",
+    "marked-terminal": "^7.0.0",
+    "ora": "^8.0.1"
+  }
+}

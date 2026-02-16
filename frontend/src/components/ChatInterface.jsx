@@ -3,8 +3,8 @@ import { backend } from 'declarations/backend';
 import botImg from '/bot.svg';
 import userImg from '/user.svg';
 
-const ChatInterface = ({ 
-  userPrincipal, 
+const ChatInterface = ({
+  userPrincipal,
   onBackToWelcome,
   initialChat = [],
   selectedProvider = 'gemini',
@@ -14,8 +14,8 @@ const ChatInterface = ({
 }) => {
   const [chat, setChat] = useState(initialChat.length > 0 ? initialChat : [
     {
-      system: { 
-        content: "🌐 Welcome to your ICP-Native Universal AI Assistant! I'm powered by the Internet Computer with Internet Identity authentication, cycles-based payments, and on-chain storage. Your original chatting experience is preserved while adding Web3 capabilities. What would you like to explore today?",
+      system: {
+        content: "🌐 Welcome to your ICP-Native Anveshak AI! I'm powered by the Internet Computer with Internet Identity authentication, cycles-based payments, and on-chain storage. Your original chatting experience is preserved while adding Web3 capabilities. What would you like to explore today?",
         provider: "system"
       }
     }
@@ -57,15 +57,15 @@ const ChatInterface = ({
       }
 
       if (response.Ok) {
-        setChat(prev => [...prev, { 
-          assistant: { 
+        setChat(prev => [...prev, {
+          assistant: {
             content: response.Ok,
             provider: selectedProvider || "gemini"
           }
         }]);
       } else {
-        setChat(prev => [...prev, { 
-          assistant: { 
+        setChat(prev => [...prev, {
+          assistant: {
             content: `Error: ${response.Err}`,
             provider: "error"
           }
@@ -73,8 +73,8 @@ const ChatInterface = ({
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setChat(prev => [...prev, { 
-        assistant: { 
+      setChat(prev => [...prev, {
+        assistant: {
           content: `Error: Failed to send message. ${error.message}`,
           provider: "error"
         }
@@ -98,7 +98,7 @@ const ChatInterface = ({
             </svg>
             <span>Back to Welcome</span>
           </button>
-          
+
           <div className="text-center">
             <h1 className="text-xl font-semibold text-gray-900">AI Assistant</h1>
             <p className="text-sm text-gray-500">
@@ -117,7 +117,7 @@ const ChatInterface = ({
 
       {/* Chat Area */}
       <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
-        <div 
+        <div
           ref={chatBoxRef}
           className="flex-1 overflow-y-auto p-4 space-y-4"
         >
@@ -131,7 +131,7 @@ const ChatInterface = ({
                   <img src={userImg} alt="User" className="w-8 h-8 rounded-full" />
                 </div>
               )}
-              
+
               {message.assistant && (
                 <div className="flex items-start space-x-3">
                   <img src={botImg} alt="Assistant" className="w-8 h-8 rounded-full" />
@@ -143,7 +143,7 @@ const ChatInterface = ({
                   </div>
                 </div>
               )}
-              
+
               {message.system && (
                 <div className="flex justify-center">
                   <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl px-4 py-2 max-w-2xl">
@@ -153,15 +153,15 @@ const ChatInterface = ({
               )}
             </div>
           ))}
-          
+
           {isLoading && (
             <div className="flex items-start space-x-3">
               <img src={botImg} alt="Assistant" className="w-8 h-8 rounded-full" />
               <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-2 shadow-sm border">
                 <div className="flex space-x-1">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.1s'}}></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
                 </div>
               </div>
             </div>

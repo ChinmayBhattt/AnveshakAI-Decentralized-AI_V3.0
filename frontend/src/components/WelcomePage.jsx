@@ -5,27 +5,38 @@ import CapabilitiesSection from './CapabilitiesSection';
 import TechSpecs from './TechSpecs';
 import Footer from './Footer';
 
-const WelcomePage = ({ 
-  userPrincipal, 
-  onConnect, 
-  onDisconnect, 
-  onGetStarted 
+const WelcomePage = ({
+  userPrincipal,
+  onConnect,
+  onDisconnect,
+  onGetStarted,
+  onShowDocumentation,
+  onShowPrivacy,
+  onShowTerms,
+  onShowContact,
+  onShowApiReference
 }) => {
   return (
     <div className="min-h-screen bg-white">
-      <Header 
+      <Header
         userPrincipal={userPrincipal}
         onConnect={onConnect}
         onDisconnect={onDisconnect}
       />
-      
+
       <main>
         <WelcomeHero onGetStarted={onGetStarted} />
         <CapabilitiesSection />
         <TechSpecs />
       </main>
-      
-      <Footer />
+
+      <Footer
+        onShowDocumentation={onShowDocumentation}
+        onShowPrivacy={onShowPrivacy}
+        onShowTerms={onShowTerms}
+        onShowContact={onShowContact}
+        onShowApiReference={onShowApiReference}
+      />
     </div>
   );
 };

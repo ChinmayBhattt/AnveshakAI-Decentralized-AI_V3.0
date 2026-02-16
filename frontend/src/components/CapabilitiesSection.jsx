@@ -84,7 +84,7 @@ const CapabilitiesSection = () => {
             Comprehensive AI Capabilities
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our Universal AI Assistant is designed to handle diverse scenarios across multiple domains, 
+            Our Anveshak AI is designed to handle diverse scenarios across multiple domains,
             providing specialized intelligence for your specific needs.
           </p>
         </div>

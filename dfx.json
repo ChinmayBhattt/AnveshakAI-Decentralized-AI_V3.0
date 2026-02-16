@@ -17,11 +17,15 @@
       ]
     },
     "frontend": {
-      "dependencies": ["backend"],
+      "dependencies": [
+        "backend"
+      ],
       "frontend": {
         "entrypoint": "frontend/index.html"
       },
-      "source": ["frontend/dist"],
+      "source": [
+        "frontend/dist"
+      ],
       "type": "assets"
     }
   },

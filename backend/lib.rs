@@ -175,7 +175,7 @@ thread_local! {
 // Original functions (unchanged for backward compatibility)
 #[ic_cdk::query]
 fn greet(name: String) -> String {
-    format!("Hello, {}! Welcome to your Universal AI Assistant powered by the Internet Computer!", name)
+    format!("Hello, {}! Welcome to your Anveshak AI powered by the Internet Computer!", name)
 }
 
 #[ic_cdk::update]
@@ -210,7 +210,7 @@ async fn prompt(prompt_text: String) -> Result<String, String> {
     }
 
     let url = format!(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={}",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={}",
         api_key
     );
 
@@ -256,10 +256,14 @@ async fn prompt(prompt_text: String) -> Result<String, String> {
                 }
                 Err("No content found in Gemini response".to_string())
             } else {
+                let error_msg = String::from_utf8_lossy(&response.body);
+                if response.status == Nat::from(429u32) || error_msg.contains("RESOURCE_EXHAUSTED") {
+                    return Ok("[Mock Mode] Gemini API quota exceeded. This is a simulated response to allow you to test the DApp features (Cycles, Storage, Internet Identity).".to_string());
+                }
                 Err(format!(
                     "API call failed with status {}: {}",
                     response.status,
-                    String::from_utf8_lossy(&response.body)
+                    error_msg
                 ))
             }
         }
@@ -378,7 +382,18 @@ async fn icp_ai_prompt(
     );
     
     // Call original Gemini API logic
-    let response = call_gemini_api(enhanced_prompt, api_key).await?;
+    let response_result = call_gemini_api(enhanced_prompt, api_key).await;
+    
+    let response = match response_result {
+        Ok(res) => res,
+        Err(e) => {
+            if e.contains("429") || e.contains("RESOURCE_EXHAUSTED") {
+                 "[Mock Mode] Gemini API quota exceeded. This is a simulated response to allow you to test the DApp features (Cycles, Storage, Internet Identity).".to_string()
+            } else {
+                return Err(e);
+            }
+        }
+    };
     
     // Deduct cycles and update state
     STATE.with(|state| {
@@ -416,7 +431,7 @@ async fn icp_ai_prompt(
 
 async fn call_gemini_api(prompt: String, api_key: String) -> Result<String, String> {
     let url = format!(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={}",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={}",
         api_key
     );
 
@@ -456,10 +471,14 @@ async fn call_gemini_api(prompt: String, api_key: String) -> Result<String, Stri
                 }
                 Err("No content found in Gemini response".to_string())
             } else {
+                let error_msg = String::from_utf8_lossy(&response.body);
+                if response.status == Nat::from(429u32) || error_msg.contains("RESOURCE_EXHAUSTED") {
+                     return Err(format!("API call failed with status 429: {}", error_msg));
+                }
                 Err(format!(
                     "API call failed with status {}: {}",
                     response.status,
-                    String::from_utf8_lossy(&response.body)
+                    error_msg
                 ))
             }
         }

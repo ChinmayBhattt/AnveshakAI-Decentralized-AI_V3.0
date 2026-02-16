@@ -2,7 +2,7 @@
 name = "backend"
 version = "0.1.0"
 edition = "2021"
-description = "Universal AI Assistant backend canister for Internet Computer"
+description = "Anveshak AI backend canister for Internet Computer"
 
 [lib]
 crate-type = ["cdylib"]

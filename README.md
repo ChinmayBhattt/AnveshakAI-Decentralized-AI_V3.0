@@ -44,7 +44,7 @@ flowchart TD
 
 ### Prerequisites
 
-Before setting up the Universal AI Assistant, ensure you have the following installed:
+Before setting up the Anveshak AI, ensure you have the following installed:
 
 - **Node.js** (v18 or higher) - [Download here](https://nodejs.org/)
 - **Rust** (latest stable) - [Install via rustup](https://rustup.rs/)
@@ -77,7 +77,7 @@ Before setting up the Universal AI Assistant, ensure you have the following inst
 
 ### 🔑 API Key Configuration
 
-The Universal AI Assistant uses Google's Gemini API for AI responses. You'll need to configure an API key:
+The Anveshak AI uses Google's Gemini API for AI responses. You'll need to configure an API key:
 
 #### Step 1: Get a Google Gemini API Key
 
@@ -120,7 +120,7 @@ You should receive a response like:
 
 ### 🌐 Access Your Assistant
 
-Once deployed, you can access your Universal AI Assistant through:
+Once deployed, you can access your Anveshak AI through:
 
 - **Local Development**: `http://localhost:4943/?canisterId=YOUR_FRONTEND_CANISTER_ID`
 - **IC Network**: `https://YOUR_FRONTEND_CANISTER_ID.ic0.app`
@@ -223,7 +223,7 @@ dfx canister logs backend
 
 ## Practical Use Cases
 
-The Universal AI Assistant is designed to be versatile and can be applied to a wide range of scenarios:
+The Anveshak AI is designed to be versatile and can be applied to a wide range of scenarios:
 
 - **Medical**: Upload medical textbooks and research papers to get diagnostic assistance.
 - **Legal**: Upload legal documents and contracts to receive in-depth analysis and summaries.

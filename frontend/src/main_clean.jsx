@@ -8,21 +8,21 @@ import '/index.css';
 const App = () => {
   // View state
   const [currentView, setCurrentView] = useState('welcome'); // 'welcome' or 'chat'
-  
+
   const [chat, setChat] = useState([
     {
-      system: { 
-        content: "🌐 Welcome to your ICP-Native Universal AI Assistant! I'm powered by the Internet Computer with Internet Identity authentication, cycles-based payments, and on-chain storage. Your original chatting experience is preserved while adding Web3 capabilities. What would you like to explore today?",
+      system: {
+        content: "🌐 Welcome to your ICP-Native Anveshak AI! I'm powered by the Internet Computer with Internet Identity authentication, cycles-based payments, and on-chain storage. Your original chatting experience is preserved while adding Web3 capabilities. What would you like to explore today?",
         provider: "system"
       }
     }
   ]);
-  
+
   // Original state variables
   const [selectedProvider, setSelectedProvider] = useState('gemini');
   const [assistantType, setAssistantType] = useState('casual');
   const [availableProviders, setAvailableProviders] = useState(['gemini']);
-  
+
   // New ICP-native state variables
   const [userPrincipal, setUserPrincipal] = useState(null);
   const [storeOnChain, setStoreOnChain] = useState(false);
@@ -48,7 +48,7 @@ const App = () => {
 
   const loadUserDashboard = async () => {
     if (!userPrincipal) return;
-    
+
     try {
       const dashboardResult = await backend.get_user_dashboard(userPrincipal);
       if (dashboardResult.Ok) {
@@ -83,7 +83,7 @@ const App = () => {
   // Render the appropriate view
   if (currentView === 'welcome') {
     return (
-      <WelcomePage 
+      <WelcomePage
         userPrincipal={userPrincipal}
         onConnect={handleConnect}
         onDisconnect={handleDisconnect}
@@ -93,7 +93,7 @@ const App = () => {
   }
 
   return (
-    <ChatInterface 
+    <ChatInterface
       userPrincipal={userPrincipal}
       onBackToWelcome={handleBackToWelcome}
       initialChat={chat}
