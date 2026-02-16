@@ -1,4 +1,4 @@
-# AnveshakAI: A Decentralized Knowledge Powerhouse
+# AnveshakAI: A Decentralized AI
 
 This project is building a decentralized AI-powered knowledge assistant that runs entirely on the Internet Computer Protocol (ICP). It's designed to be a personalized AI that becomes an expert in any domain you provide, while ensuring data privacy and decentralization through blockchain technology.
 
@@ -229,4 +229,4 @@ The Anveshak AI is designed to be versatile and can be applied to a wide range o
 - **Legal**: Upload legal documents and contracts to receive in-depth analysis and summaries.
 - **Development**: Upload codebases to get explanations, identify potential issues, and receive suggestions for improvements.
 - **Cross-Domain**: Handle a mix of document types for complex queries that span multiple fields of knowledge.
-# AnveshakAI-Decentralized-AI_V3.0
+# AnveshakAI-Decentralized-AI
