@@ -114,7 +114,7 @@ const TerminalEmulator = () => {
                     <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
                 </div>
                 <div className="flex-1 text-center">
-                    <span className="text-gray-500 text-xs font-mono">chinmay@mac — AnveshakAI CLI</span>
+                    <span className="text-gray-500 text-xs font-mono">AnveshakAI CLI</span>
                 </div>
                 <div className="text-gray-600 text-xs">⌘ BETA</div>
             </div>

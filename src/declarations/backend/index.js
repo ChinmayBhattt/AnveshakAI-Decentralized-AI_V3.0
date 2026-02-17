@@ -39,4 +39,26 @@ export const createActor = (canisterId, options = {}) => {
   });
 };
 
-export const backend = canisterId ? createActor(canisterId) : undefined;
+// ─── MOCK BACKEND FOR DEMO/VERCEL ──────────────────────────────
+const mockBackend = {
+  greet: async (name) => `[DEMO] Hello ${name}! AnveshakAI is running in demo mode (No Backend Connection).`,
+  prompt: async (text) => ({ Ok: `[DEMO] This is a simulated response. The backend is not connected. You said: "${text}"` }),
+  icp_ai_prompt: async (text) => ({ Ok: `[DEMO] Simulated AI response for: "${text}".\n\n(To get real responses, deploy the backend to IC Mainnet and configure CANISTER_ID_BACKEND).` }),
+  get_user_dashboard: async () => ({ Ok: { cycles_balance: 10000n, total_cycles_spent: 1250n, conversation_count: 5n, token_balance: 500n, stored_content_count: 2n, subscription_tier: [] } }),
+  get_canister_metrics: async () => ({ total_queries: 120n, total_cycles_consumed: 500000n, total_users: 15n, storage_used_bytes: 1024n, uptime_start: 0n }),
+  get_available_providers: async () => ["gemini-mock", "gpt-mock"],
+  get_ai_token_balance: async () => 500n,
+  get_user_cycles_balance: async () => 10000n,
+  store_ai_content: async () => ({ Ok: "mock_content_id_123" }),
+  get_stored_content: async () => ({ Err: "Content storage is simulated." }),
+  create_sns_proposal: async () => ({ Ok: 1n }),
+  get_sns_proposals: async () => [],
+  vote_sns_proposal: async () => ({ Ok: "Voted (Mock)" }),
+  mint_ai_tokens: async () => ({ Ok: "Minted (Mock)" }),
+  deposit_user_cycles: async () => ({ Ok: "Deposited (Mock)" }),
+  set_api_key: async () => { }, // No-op
+  set_provider_api_key: async () => { }, // No-op
+};
+
+// Use Mock if canisterId is missing (e.g. Vercel without env var)
+export const backend = canisterId ? createActor(canisterId) : mockBackend;
