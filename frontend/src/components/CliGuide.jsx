@@ -169,6 +169,7 @@ const CopyCommand = ({ command, label }) => {
 const CliGuide = ({ onBack }) => {
     const [scrollY, setScrollY] = useState(0);
     const [activeTab, setActiveTab] = useState('one-liner');
+    const [platform, setPlatform] = useState('unix'); // 'unix' | 'windows'
 
     const copyToClipboard = (text) => {
         navigator.clipboard.writeText(text);
@@ -328,7 +329,15 @@ const CliGuide = ({ onBack }) => {
                                 </div>
 
                                 <div className="flex items-center gap-4 text-xs font-mono shrink-0">
-                                    <span className="text-gray-500">macOS/Linux <span className="text-red-400 cursor-pointer hover:underline">change</span></span>
+                                    <span className="text-gray-500">
+                                        {platform === 'unix' ? 'macOS/Linux' : 'Windows'}{' '}
+                                        <button
+                                            onClick={() => setPlatform(prev => prev === 'unix' ? 'windows' : 'unix')}
+                                            className="text-red-400 cursor-pointer hover:underline focus:outline-none"
+                                        >
+                                            change
+                                        </button>
+                                    </span>
                                     <span className="px-2 py-1 rounded bg-[#1c1c24] border border-gray-800 text-gray-400">β BETA</span>
                                 </div>
                             </div>
@@ -337,7 +346,9 @@ const CliGuide = ({ onBack }) => {
                             <div className="p-6 md:p-8 bg-[#0a0a0f] relative group">
                                 <div className="font-mono text-sm md:text-base">
                                     <div className="text-gray-500 mb-4 select-none">
-                                        # {activeTab === 'one-liner' ? 'Works everywhere. Installs everything. You\'re welcome.' : 'Install globally via NPM. Requires Node.js. 📦'}
+                                        # {activeTab === 'one-liner'
+                                            ? (platform === 'unix' ? 'Works everywhere. Installs everything. You\'re welcome. 🦞' : 'For Windows, use WSL (Windows Subsystem for Linux). 🪟')
+                                            : 'Install globally via NPM. Requires Node.js. 📦'}
                                     </div>
                                     <div className="flex items-center justify-between gap-4">
                                         <div className="flex items-center gap-3 text-gray-300 overflow-x-auto whitespace-nowrap pb-2 md:pb-0 scrollbar-hide">
@@ -346,7 +357,9 @@ const CliGuide = ({ onBack }) => {
                                                 {activeTab === 'one-liner' ? 'curl' : 'npm'}
                                             </span>
                                             <span>
-                                                {activeTab === 'one-liner' ? '-fsSL https://anveshak-ai.vercel.app/install.sh | bash' : 'install -g anveshakai'}
+                                                {activeTab === 'one-liner'
+                                                    ? (platform === 'unix' ? '-fsSL https://anveshak-ai.vercel.app/install.sh | bash' : '-fsSL https://anveshak-ai.vercel.app/install.sh | bash')
+                                                    : 'install -g anveshakai'}
                                             </span>
                                         </div>
                                         <button
