@@ -295,16 +295,8 @@ const CliGuide = ({ onBack }) => {
                     {/* Copy Commands */}
                     <div className="grid grid-cols-1 gap-3 max-w-3xl mx-auto">
                         <CopyCommand
-                            command="git clone https://github.com/ChinmayBhattt/AnveshakAI-Decentralized-AI-Assistant.git"
-                            label="git clone https://github.com/ChinmayBhattt/AnveshakAI-Decentralized-AI-Assistant.git"
-                        />
-                        <CopyCommand
-                            command="cd AnveshakAI-Decentralized-AI-Assistant/cli && npm install"
-                            label="cd AnveshakAI-Decentralized-AI-Assistant/cli && npm install"
-                        />
-                        <CopyCommand
-                            command="npm start"
-                            label="npm start"
+                            command="curl -fsSL https://anveshak-ai.vercel.app/install.sh | bash"
+                            label="curl -fsSL https://anveshak-ai.vercel.app/install.sh | bash"
                         />
                     </div>
 
@@ -408,7 +400,7 @@ const CliGuide = ({ onBack }) => {
 
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#0e0e14] border border-gray-800/60 rounded-xl font-mono text-sm">
                         <span className="text-green-400">$</span>
-                        <span className="text-gray-300">git clone ... && cd cli && npm start</span>
+                        <span className="text-gray-300">curl -fsSL https://anveshak-ai.vercel.app/install.sh | bash</span>
                     </div>
                 </div>
             </section>
@@ -424,7 +416,7 @@ const CliGuide = ({ onBack }) => {
                         <a href="https://x.com/Hackers_Unity" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">Twitter</a>
                     </div>
                     <p className="text-gray-600 text-sm">
-                       Powered by <span className="text-gray-400"></span> <a href="https://github.com/Hackers-Unity" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Hackers Unity</a>.
+                        Powered by <span className="text-gray-400"></span> <a href="https://github.com/Hackers-Unity" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Hackers Unity</a>.
                     </p>
                 </div>
             </footer>
