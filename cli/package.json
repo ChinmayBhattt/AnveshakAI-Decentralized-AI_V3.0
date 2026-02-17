@@ -5,8 +5,8 @@
   "main": "bin/index.js",
   "type": "module",
   "bin": {
-    "anveshak": "./bin/index.js",
-    "anveshakai": "./bin/index.js"
+    "anveshak": "bin/index.js",
+    "anveshakai": "bin/index.js"
   },
   "scripts": {
     "start": "node bin/index.js"
